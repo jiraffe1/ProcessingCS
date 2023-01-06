@@ -1,0 +1,10 @@
+C:\Users\Rs\source\repos\ProcessingCS\bin\Debug\ProcessingCS.exe.config
+C:\Users\Rs\source\repos\ProcessingCS\bin\Debug\ProcessingCS.exe
+C:\Users\Rs\source\repos\ProcessingCS\bin\Debug\ProcessingCS.pdb
+C:\Users\Rs\source\repos\ProcessingCS\obj\Debug\ProcessingCS.csprojAssemblyReference.cache
+C:\Users\Rs\source\repos\ProcessingCS\obj\Debug\ProcessingCS.Properties.Resources.resources
+C:\Users\Rs\source\repos\ProcessingCS\obj\Debug\ProcessingCS.csproj.GenerateResource.cache
+C:\Users\Rs\source\repos\ProcessingCS\obj\Debug\ProcessingCS.csproj.CoreCompileInputs.cache
+C:\Users\Rs\source\repos\ProcessingCS\obj\Debug\ProcessingCS.exe
+C:\Users\Rs\source\repos\ProcessingCS\obj\Debug\ProcessingCS.pdb
+C:\Users\Rs\source\repos\ProcessingCS\obj\Debug\ProcessingCS.Form1.resources
