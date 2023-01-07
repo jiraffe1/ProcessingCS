@@ -28,6 +28,7 @@ namespace ProcessingCS
         public readonly int CORNER = 0;
         public readonly int CENTER = 1;
         private int currentRectMode = 0;
+        private int currentImageMode = 0;
 
         public bool mouseDown = false;
 
@@ -167,6 +168,11 @@ namespace ProcessingCS
         public void RectMode(int rm)
         {
             currentRectMode = rm;
+        }
+
+        public void ImageMode(int im)
+        {
+            currentImageMode = im;
         }
 
         public void Stroke(int r, int g, int b)
@@ -474,4 +480,14 @@ namespace ProcessingCS
         }
     }
     #endregion
+  
+
+    class PImage {
+        Image img;
+
+        public PImage(string imagePath)
+        {
+            img = System.Drawing.Image.FromFile(imagePath);
+        }
+    }
 }
