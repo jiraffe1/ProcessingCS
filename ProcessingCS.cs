@@ -483,11 +483,16 @@ namespace ProcessingCS
   
 
     class PImage {
-        Image img;
+        Image pixels;
 
         public PImage(string imagePath)
         {
-            img = System.Drawing.Image.FromFile(imagePath);
+            pixels = System.Drawing.Image.FromFile(imagePath);
+        }
+
+        void Display(float x, float y)
+        {
+            //System.Drawing.
         }
     }
 }
