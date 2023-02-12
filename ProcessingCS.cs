@@ -6,9 +6,9 @@ using System.Collections.Generic;
 namespace ProcessingCS
 {
     /*
-     * Replicating Processing/p5.js functionality
+     * Replicating Processing/p5.js functionality in C# using System.Drawing 
      * 
-     * - This script is as a helper/library and is not intended to be viewed or edited by a user
+     * - This script is as a helper/library
      * */
 
     public class PCSWindow : Form
@@ -17,8 +17,7 @@ namespace ProcessingCS
 
         public int frameCount = 0;
         private Graphics currentGraphics;
-        private Pen strokeColour = new Pen(Color.FromArgb(0, 0, 0), 2.0f);
-        private SolidBrush fillColour = new SolidBrush(Color.FromArgb(0, 0, 0, 0));
+
 
         private int CanvasWidth = 0;
         private int CanvasHeight = 0;
@@ -27,18 +26,28 @@ namespace ProcessingCS
 
         public readonly int CORNER = 0;
         public readonly int CENTER = 1;
-        private int currentRectMode = 0;
-        private int currentImageMode = 0;
+        public readonly int LEFT = 2;
+        public readonly int RIGHT = 3;
 
         public bool mouseDown = false;
 
         public char key;
         public List<Keys> keysDown = new List<Keys>();
 
+        #endregion
+
+        #region GraphicsConfigurationVariables
+
         private bool fillEnabled = true;
         private bool strokeEnabled = true;
-
         public PVector Transform = new PVector(0, 0);
+        private int currentRectMode = 0;
+        private int currentImageMode = 0;
+        private int currentTextMode = 0;
+        private Pen strokeColour = new Pen(Color.FromArgb(0, 0, 0), 2.0f);
+        private SolidBrush fillColour = new SolidBrush(Color.FromArgb(0, 0, 0, 0));
+        private String textDrawFont = "Arial";
+        private float textSize = 3.0f;
 
         #endregion
 
@@ -253,6 +262,10 @@ namespace ProcessingCS
             Transform = v;
         }
 
+        public void TextSize(float s) {
+            textSize = s;
+}
+
         #endregion
 
         #region PrimitiveShapes
@@ -305,6 +318,49 @@ namespace ProcessingCS
             Graphics g = getGraphics();
 
             if (strokeEnabled) g.DrawLine(strokeColour, x1 + Transform.x, y1 + Transform.y, x2 + Transform.x, y2 + Transform.y);
+        }
+
+        #endregion
+
+        #region Text
+
+        public void DrawText(string drawString, float x, float y) {
+            //Default alignment: CORNER
+            Graphics g = getGraphics();
+
+            System.Drawing.Font newFont = new Font(textDrawFont, textSize);
+            System.Drawing.StringFormat drawFormat = new System.Drawing.StringFormat();
+            
+            g.DrawString(drawString, newFont, fillColour, x, y, new System.Drawing.StringFormat());
+
+            newFont.Dispose();
+           
+        }
+
+        public void DrawText(float x, float y, float w, float h) {
+        }
+
+        #endregion
+
+        #region GraphicsSettingsStructure
+
+        struct GraphicsConfiguration {
+            public bool fillEnabled;
+            public bool strokeEnabled;
+            public PVector Transform;
+            public int currentRectMode;
+            public int currentImageMode;
+            public Pen strokeColour;
+
+
+            GraphicsConfiguration(bool fe, bool se, PVector tr, int cr, int ci, Pen sc) {
+                this.fillEnabled = fe;
+                this.strokeEnabled = se;
+                this.Transform = tr;
+                this.currentRectMode = cr;
+                this.currentImageMode = ci;
+                this.strokeColour = sc;
+            }
         }
 
         #endregion
